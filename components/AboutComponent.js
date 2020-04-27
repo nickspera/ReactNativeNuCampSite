@@ -14,7 +14,6 @@ function Mission() {
 }
 
 class About extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -23,7 +22,7 @@ class About extends Component {
     }
 
     static navigationOptions = {
-        title: 'About'
+        title: 'About Us'
     }
 
     render() {
