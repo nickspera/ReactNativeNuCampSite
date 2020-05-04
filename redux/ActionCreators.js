@@ -155,3 +155,32 @@ export const addFavorite = campsiteId => ({
     type: ActionTypes.ADD_FAVORITE,
     payload: campsiteId
 });
+
+//
+export const postComment = (campsiteId, rating, author, text) => dispatch => {
+    const newComment = {
+        campsiteId: campsiteId,
+        rating: rating,
+        author: author,
+        text: text,
+    };
+    newComment.date = new Date().toISOString();
+
+    setTimeout (() => {
+        dispatch(addComment(newComment))
+        }, 2000);
+ 
+    return fetch(baseUrl + 'comments', {
+        method: "POST",
+        body: JSON.stringify(newComment),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+};
+
+export const addComment = newComment => ({
+    type: ActionTypes.ADD_COMMENT,
+    payload: newComment
+});
+//
